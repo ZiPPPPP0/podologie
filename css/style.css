@@ -646,14 +646,21 @@ nav {
     text-align: center;
 }
 
+/* Profile Container */
+.profile-container {
+    text-align: center;
+    margin: var(--space-8) auto var(--space-12);
+    padding: var(--space-6);
+}
+
 /* Profile Image */
 .profile-image {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center top;
-    margin: 0 auto var(--space-6);
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-2xl);
+    object-fit: contain;
+    margin: 0 auto;
     display: block;
     border: 5px solid var(--primary);
     box-shadow: var(--shadow-lg);
@@ -662,15 +669,18 @@ nav {
 }
 
 .profile-image:hover {
-    transform: scale(1.05);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-xl);
     border-color: var(--primary-hover);
 }
 
 @media (max-width: 768px) {
     .profile-image {
-        width: 180px;
-        height: 180px;
+        max-width: 250px;
+    }
+
+    .profile-container {
+        padding: var(--space-4);
     }
 }
 
