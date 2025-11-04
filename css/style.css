@@ -383,11 +383,16 @@ nav {
 
 .theme-icon {
     transition: transform var(--duration-slow) var(--ease-bounce);
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    color: var(--text-primary);
 }
 
 .theme-toggle:hover .theme-icon {
     transform: rotate(20deg) scale(1.1);
+    color: var(--primary);
 }
 
 [data-theme="dark"] .theme-toggle {

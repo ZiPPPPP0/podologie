@@ -45,7 +45,15 @@ const ThemeManager = {
 
     updateIcon(theme) {
         if (this.themeIcon) {
-            this.themeIcon.textContent = theme === 'light' ? '🌙' : '☀️';
+            // Retirer les anciennes classes
+            this.themeIcon.classList.remove('fa-moon', 'fa-sun');
+
+            // Ajouter la nouvelle classe selon le thème
+            if (theme === 'light') {
+                this.themeIcon.classList.add('fa-moon');
+            } else {
+                this.themeIcon.classList.add('fa-sun');
+            }
         }
     }
 };
