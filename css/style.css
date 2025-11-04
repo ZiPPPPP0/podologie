@@ -356,8 +356,8 @@ nav {
 /* Theme Toggle Button */
 .theme-toggle {
     position: relative;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -365,7 +365,7 @@ nav {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-full);
     cursor: pointer;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     transition: all var(--duration-normal) var(--ease-smooth);
     overflow: hidden;
 }
@@ -374,6 +374,7 @@ nav {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
     border-color: var(--primary);
+    background: var(--primary-light);
 }
 
 .theme-toggle:active {
@@ -382,10 +383,15 @@ nav {
 
 .theme-icon {
     transition: transform var(--duration-slow) var(--ease-bounce);
+    display: inline-block;
 }
 
 .theme-toggle:hover .theme-icon {
     transform: rotate(20deg) scale(1.1);
+}
+
+[data-theme="dark"] .theme-toggle {
+    background: var(--bg-tertiary);
 }
 
 /* Mobile Menu Toggle */
@@ -533,9 +539,6 @@ nav {
     gap: var(--space-3);
     font-size: 0.9375rem;
     color: var(--text-secondary);
-}
-
-.contact-item {
     position: relative;
     padding-left: var(--space-8);
 }
@@ -645,20 +648,29 @@ nav {
 
 /* Profile Image */
 .profile-image {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     margin: 0 auto var(--space-6);
     display: block;
+    background: var(--bg-secondary);
     border: 4px solid var(--primary-light);
     box-shadow: var(--shadow-md);
     transition: transform var(--duration-normal) var(--ease-smooth);
+    padding: var(--space-2);
 }
 
 .profile-image:hover {
     transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .profile-image {
+        width: 160px;
+        height: 160px;
+    }
 }
 
 /* Footer Bottom */
