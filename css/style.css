@@ -617,6 +617,46 @@ nav {
     margin-top: var(--space-8);
 }
 
+/* Section Subtitle */
+.section-subtitle {
+    text-align: center;
+    margin-top: var(--space-16);
+    margin-bottom: var(--space-8);
+    color: var(--primary);
+}
+
+/* Special Cards */
+.hygiene-card,
+.diabetes-card,
+.map-card {
+    margin-top: var(--space-8);
+    grid-column: 1 / -1;
+}
+
+.map-card {
+    text-align: center;
+}
+
+/* Profile Image */
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto var(--space-6);
+    display: block;
+    border: 4px solid var(--primary-light);
+    box-shadow: var(--shadow-md);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-color);
+}
+
 .card {
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
