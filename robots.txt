@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Exclure les dossiers techniques
+Disallow: /css/
+Disallow: /js/
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://www.podologue-argentan.fr/sitemap.xml
+
+# Protection contre les scraping trop agressifs
+Crawl-delay: 1

@@ -3,64 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sophie Dudouit - Pédicure Podologue Posturologue</title>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <title>Cabinet de Podologie Sophie Dudouit - Podologue Argentan</title>
+    <meta name="description" content="Cabinet de podologie Sophie Dudouit à Argentan. Pédicure, podologue D.E. et posturologue. Soins des pieds, semelles orthopédiques, orthoplastie. 28 ans d'expérience.">
+    <meta name="keywords" content="podologue argentan, pédicure argentan, semelles orthopédiques, posturologie argentan, orthoplastie">
+    <meta name="author" content="Cabinet de Podologie Sophie Dudouit">
+    <link rel="canonical" href="https://www.podologue-argentan.fr">
+    
+    <!-- Open Graph pour réseaux sociaux -->
+    <meta property="og:title" content="Cabinet de Podologie Sophie Dudouit - Podologue Argentan">
+    <meta property="og:description" content="Cabinet de podologie Sophie Dudouit à Argentan. Pédicure, podologue D.E. et posturologue avec 28 ans d'expérience.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.podologue-argentan.fr">
+    <meta property="og:image" content="https://www.podologue-argentan.fr/images/sophie-dudouit.jpg">
+    
+    <!-- Schema markup JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Cabinet de Podologie Sophie Dudouit",
+        "description": "Cabinet de podologie à Argentan",
+        "url": "https://www.podologue-argentan.fr",
+        "telephone": "+33233365372",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "7 rue des moulins",
+            "addressLocality": "Argentan",
+            "postalCode": "61200",
+            "addressCountry": "FR"
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "08:45",
+                "closes": "18:00"
+            }
+        ],
+        "priceRange": "€€",
+        "image": "https://www.podologue-argentan.fr/images/sophie-dudouit.jpg",
+        "founder": {
+            "@type": "Person",
+            "name": "Sophie Dudouit",
+            "jobTitle": "Pédicure Podologue D.E. Posturologue"
+        }
+    }
+    </script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4929FND7E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-T4929FND7E');
+    </script>
 </head>
 <body>
-    <header>
-        <div class="banner">
-            <div class="logo-title">
-                <h1>Pédicure Podologue D.E. Posturologue</h1>
-                <h2>Sophie Dudouit</h2>
-            </div>
-            <div class="contact-info">
-                <div class="phone">
-                    <span class="phone-number">02 33 36 53 72</span>
-                </div>
-                <div class="rendez-vous">
-                    <span>Sur rendez-vous uniquement par téléphone</span>
-                </div>
-                <div class="address">
-                    <a href="https://www.google.fr/maps/place/7+Rue+des+Moulins,+61200+Argentan/@48.7416202,-0.0250103,16z/data=!3m1!4b1!4m6!3m5!1s0x480a006a8a5abff9:0x7cb9087b930d633f!8m2!3d48.7416203!4d-0.0201394!16s%2Fg%2F11c4t2b0gm?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="address-btn">
-                        7 rue des moulins, 61200 ARGENTAN
-                    </a>
-                </div>
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#presentation">Présentation</a></li>
+    <a href="#main-content" class="skip-link">Passer au contenu principal</a>
+    
+    <header role="banner">
+        <nav class="container" role="navigation" aria-label="Navigation principale">
+            <div class="logo">Cabinet Sophie Dudouit</div>
+            <button class="nav-toggle" aria-label="Menu mobile" aria-expanded="false">☰</button>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#praticien">Le praticien</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#cabinet">Cabinet</a></li>
                 <li><a href="#tarifs">Tarifs</a></li>
-                <li><a href="#horaires">Horaires</a></li>
-                <li><a href="#localisation">Localisation</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section class="image-principale">
-            <img src="images/image_principale_podologie.jpg" alt="Cabinet de podologie Sophie Dudouit" class="full-width-image">
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section id="accueil" class="hero">
+            <div class="container">
+                <h1>Pédicure Podologue D.E. Posturologue</h1>
+                <p>Découvrez mon expertise en pédicurie et podologie pour un bien-être durable.</p>
+                <a href="tel:+33233365372" class="cta-button">Prendre rendez-vous : 02 33 36 53 72</a>
+            </div>
         </section>
 
-        <section id="presentation" class="section with-background-image">
+        <!-- Contact Info -->
+        <section class="contact-info">
             <div class="container">
-                <h2>Présentation</h2>
-                <div class="presentation-content">
-                    <div class="presentation-text">
-                        <h3>Sophie Dudouit</h3>
-                        <p>Pédicure podologue D.E. diplômée de l'IFPP de Rennes</p>
-                        <p>Date d'installation : 01/09/1999</p>
-                        <p>Podologue depuis : <span id="experience-years">28</span> ans</p>
-                        <p class="accroche"><strong>Découvrez mon expertise en pédicurie et podologie pour un bien-être durable.</strong></p>
-                        <h4>Formations</h4>
+                <div class="contact-item">
+                    <span>7 rue des moulins, 61200 ARGENTAN</span>
+                </div>
+                <div class="contact-item">
+                    <span><a href="tel:+33233365372" class="phone-link">02 33 36 53 72</a></span>
+                </div>
+                <div class="contact-item">
+                    <span>Sur rendez-vous uniquement</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Le Praticien -->
+        <section id="praticien" class="section">
+            <div class="container">
+                <h2>Sophie Dudouit - Votre Pédicure Podologue</h2>
+                <div class="cards-grid">
+                    <div class="card fade-in">
+                        <img src="images/sophie-dudouit.jpg" alt="Sophie Dudouit, Pédicure Podologue" style="border-radius: 50%; margin-bottom: 1rem; width: 150px; height: 150px; object-fit: cover;">
+                        <h3>Diplômes et formation</h3>
+                        <p><strong>Diplômée de l'IFPP de Rennes</strong></p>
+                        <p><strong>Installée depuis le 01/09/1999</strong></p>
+                        <p><span id="experience-years">28</span> ans d'expérience</p>
+                    </div>
+                    <div class="card fade-in">
+                        <h3>Spécialisations</h3>
                         <ul>
                             <li>Posturologie Villeneuve sur 2 ans</li>
                             <li>Posturologie CERA</li>
@@ -68,319 +132,447 @@
                             <li>Formation orthonyxie</li>
                             <li>Formation orthoplastie</li>
                         </ul>
-                        <div class="hygiene-info">
-                            <h4>Normes d'hygiène</h4>
-                            <p>Le cabinet respecte strictement les normes d'hygiène professionnelles :</p>
-                            <ul>
-                                <li>Décontamination de l'instrumentation dans un bac à ultrasons</li>
-                                <li>Utilisation de lames à usage unique</li>
-                                <li>Ensachage professionnel</li>
-                                <li>Stérilisation dans un autoclave classe B</li>
-                                <li>Traçabilité complète de la stérilisation</li>
-                            </ul>
-                        </div>
-                        <p class="info-complementaire">Information complémentaire : possède un cabinet secondaire sur Carrouges où uniquement les soins sont effectués.</p>
-                        <p class="info-complementaire"><strong>Lors de la prise de rendez-vous, précisez si le soin doit se faire sur Carrouges.</strong></p>
-                    </div>
-                    <div class="presentation-image">
-                        <img src="images/image_sophie_d.jpg" alt="Sophie Dudouit - Pédicure Podologue Posturologue" class="profile-image">
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Services -->
         <section id="services" class="section">
             <div class="container">
-                <h2>Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-hand-holding-medical"></i></div>
-                        <h3>Soins au cabinet et à domicile</h3>
-                        <p>Traitement des pathologies de la peau et des ongles</p>
-                        <div class="service-image">
-                            <img src="images/pedicurie_5.jpg" alt="Soins de pédicurie">
-                        </div>
+                <h2>Nos Services</h2>
+                <div class="cards-grid">
+                    <div class="card fade-in">
+                        <img src="images/pedicurie.jpg" alt="Soins de pédicurie" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                        <h3>Pédicurie</h3>
+                        <p>Traitement des pathologies de la peau et des ongles du pied :</p>
+                        <ul>
+                            <li>Cors, durillons, callosités</li>
+                            <li>Ongles incarnés</li>
+                            <li>Soins préventifs et curatifs</li>
+                        </ul>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-shoe-prints"></i></div>
-                        <h3>Semelles orthopédiques</h3>
-                        <p>Confection de semelles sur-mesure</p>
-                        <div class="service-image">
-                            <img src="images/podologie_1.jpg" alt="Semelles orthopédiques">
-                        </div>
+                    <div class="card fade-in">
+                        <img src="images/semelles-orthopediques.jpg" alt="Semelles orthopédiques" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                        <h3>Podologie</h3>
+                        <p>Confection de semelles orthopédiques sur-mesure pour :</p>
+                        <ul>
+                            <li>Corriger les déséquilibres</li>
+                            <li>Soulager les douleurs</li>
+                            <li>Améliorer la marche</li>
+                        </ul>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-user"></i></div>
+                    <div class="card fade-in">
+                        <img src="images/posturologie.jpg" alt="Analyse posturale" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
                         <h3>Posturologie</h3>
-                        <p>Analyse posturale sur plateforme podométrique</p>
-                        <div class="service-image">
-                            <img src="images/douleur_pied.jpg" alt="Analyse posturale">
-                        </div>
+                        <p>Analyse posturale sur plateforme podométrique pour :</p>
+                        <ul>
+                            <li>Identifier les déséquilibres</li>
+                            <li>Traiter les douleurs chroniques</li>
+                            <li>Améliorer l'équilibre</li>
+                        </ul>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-grip-lines"></i></div>
+                    <div class="card fade-in">
+                        <img src="images/orthoplastie.jpg" alt="Orthoplastie" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
                         <h3>Orthoplastie</h3>
-                        <p>Correction des déformations des orteils</p>
-                        <div class="service-image">
-                            <img src="images/orthoplastie.jpg" alt="Orthoplastie">
-                        </div>
+                        <p>Correction des déformations des orteils par :</p>
+                        <ul>
+                            <li>Prothèses en silicone sur-mesure</li>
+                            <li>Protection des zones douloureuses</li>
+                            <li>Prévention des frictions</li>
+                        </ul>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-spa"></i></div>
+                    <div class="card fade-in">
+                        <img src="images/orthonyxie.jpg" alt="Orthonyxie" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
                         <h3>Orthonyxie</h3>
-                        <p>Correction d'une courbure anormale de l'ongle pouvant entrainer un ongle incarné</p>
-                        <div class="service-image">
-                            <img src="images/doigt_pédicurie.jpg" alt="Orthonyxie">
-                        </div>
+                        <p>Correction de la courbure anormale de l'ongle :</p>
+                        <ul>
+                            <li>Application d'agrafes</li>
+                            <li>Redirection de la croissance</li>
+                            <li>Soulagement de la douleur</li>
+                        </ul>
+                    </div>
+                    <div class="card fade-in">
+                        <img src="images/soins-domicile.jpg" alt="Soins à domicile" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                        <h3>Soins à domicile</h3>
+                        <p>Pour votre confort :</p>
+                        <ul>
+                            <li>Disponible le mardi matin</li>
+                            <li>Matériel professionnel</li>
+                            <li>Normes d'hygiène respectées</li>
+                        </ul>
                     </div>
                 </div>
+
+                <!-- Définitions détaillées -->
+                <h3 style="margin-top: 3rem; text-align: center; color: var(--main-color);">Découvrez mes spécialités</h3>
                 
                 <div class="accordion">
-                    <div class="accordion-item">
-                        <div class="accordion-header">Podologie</div>
-                        <div class="accordion-content">
-                            <div class="definition-content">
-                                <div class="definition-text">
-                                    <p>La podologie est une discipline qui étudie le pied et ses pathologies. Le podologue s'intéresse à la structure du pied, sa biomécanique et ses interactions avec le reste du corps. Il évalue et traite les troubles fonctionnels du pied et peut confectionner des semelles orthopédiques pour corriger les déséquilibres.</p>
-                                    
-                                    <div class="info-semelles">
-                                        <h4>Pourquoi porter des semelles orthopédiques</h4>
-                                        <ul>
-                                            <li>Vous ressentez régulièrement une douleur au pied (orteils, talons, chevilles, plante et même dos du pied).</li>
-                                            <li>Vous souffrez d'une douleur au genou, à la hanche ou au dos.</li>
-                                            <li>Vous souffrez d'une malformation du pied : pieds plats, creux ou présence d'un hallux valgus.</li>
-                                            <li>Un proche observe une mauvaise démarche ou une modification de la posture.</li>
-                                            <li>Vos chaussures sont déformées et vous les usez rapidement.</li>
-                                        </ul>
-                                        <p><strong>De manière préventive si :</strong></p>
-                                        <ul>
-                                            <li>Vous pratiquez une activité sportive car vos articulations sont extrêmement sollicitées.</li>
-                                            <li>Vous avez plus de 75 ans.</li>
-                                            <li>Vous êtes diabétique, puisque la moindre plaie peut rapidement donner lieu à des complications.</li>
-                                            <li>Vous avez une jambe plus courte.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="definition-image">
-                                    <img src="images/podologie_2.jpg" alt="Podologie" class="definition-img">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Podologie - Qu'est-ce que c'est ?</span>
+                        <span>+</span>
                     </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Posturologie</div>
-                        <div class="accordion-content">
-                            <div class="definition-content">
-                                <div class="definition-text">
-                                    <p>La posturologie est l'étude de la posture et de l'équilibre du corps. Le posturologue analyse les déséquilibres posturaux et leurs répercussions sur l'ensemble du corps. Il utilise des plateformes podométriques pour mesurer les pressions exercées sous les pieds et comprendre comment les appuis influencent la posture globale.</p>
-                                </div>
-                                <div class="definition-image">
-                                    <img src="images/posturologie.jpg" alt="Posturologie" class="definition-img">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Pédicurie</div>
-                        <div class="accordion-content">
-                            <div class="definition-content">
-                                <div class="definition-text">
-                                    <p>La pédicurie concerne le traitement des affections de la peau et des ongles du pied. Le pédicure soigne :</p>
-                                    <ul>
-                                        <li><strong>Pathologies de la peau</strong> : cors, durillons, callosités, crevasses, verrues</li>
-                                        <li><strong>Pathologies des ongles</strong> : onychosis, onychomycose, ongles incarnés, ongles traumatisés, cors sous-unguaux, hématomes sous-unguaux</li>
-                                    </ul>
-                                </div>
-                                <div class="definition-image">
-                                    <img src="images/pedicurie_2.jpg" alt="Pédicurie" class="definition-img">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Orthoplastie</div>
-                        <div class="accordion-content">
-                            <div class="definition-content">
-                                <div class="definition-text">
-                                    <p>L'orthoplastie est la technique de fabrication d'orthèses en silicone pour les orteils. Ces prothèses souples sur-mesure permettent de corriger les déformations des orteils, de protéger les zones d'appui douloureuses et de prévenir les frictions.</p>
-                                </div>
-                                <div class="definition-image">
-                                    <img src="images/orthoplastie.jpg" alt="Orthoplastie" class="definition-img">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Orthonyxie</div>
-                        <div class="accordion-content">
-                            <div class="definition-content">
-                                <div class="definition-text">
-                                    <p>L'orthonyxie est une technique qui permet de corriger une courbure anormale de l'ongle pouvant entrainer un ongle incarné. Elle consiste à appliquer une agrafe ou une prothèse unguéale sur l'ongle pour rediriger sa croissance et soulager la douleur.</p>
-                                </div>
-                                <div class="definition-image">
-                                    <img src="images/doigt_pédicurie.jpg" alt="Orthonyxie" class="definition-img">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="accordion-content">
+                        <p>La podologie est une discipline qui étudie le pied et ses pathologies. Le podologue s'intéresse à la structure du pied, sa biomécanique et ses interactions avec le reste du corps. Il évalue et traite les troubles fonctionnels du pied et peut confectionner des semelles orthopédiques pour corriger les déséquilibres.</p>
+                        <h4>Pourquoi porter des semelles orthopédiques :</h4>
+                        <ul>
+                            <li>Douleur régulière au pied (orteils, talons, chevilles, plante et même dos du pied)</li>
+                            <li>Douleur au genou, à la hanche ou au dos</li>
+                            <li>Malformation du pied : pieds plats, creux ou présence d'un hallux valgus</li>
+                            <li>Mauvaise démarche ou modification de la posture observée</li>
+                            <li>Chaussures déformées et usure rapide</li>
+                        </ul>
+                        <h4>De manière préventive si :</h4>
+                        <ul>
+                            <li>Pratique d'une activité sportive</li>
+                            <li>Âge supérieur à 75 ans</li>
+                            <li>Diabète (risque de complications)</li>
+                            <li>Jambe plus courte</li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div class="role-section">
-                    <h3>Rôle du pédicure podologue posturologue</h3>
-                    <div class="role-content">
-                        <div class="role-text">
-                            <p>Le pédicure podologue posturologue est un professionnel de santé qui :</p>
-                            <ul>
-                                <li>Soulage les douleurs des pieds par des soins adaptés</li>
-                                <li>Corrige les troubles de la marche et de la posture</li>
-                                <li>Prévient les déformations et les complications, particulièrement chez les patients diabétiques</li>
-                                <li>Réalise des semelles orthopédiques personnalisées pour améliorer le confort et corriger les déséquilibres</li>
-                                <li>Conseille sur la chaussure adaptée et l'hygiène des pieds</li>
-                                <li>Analyse la posture pour identifier les causes de douleurs chroniques (dos, genoux, hanches)</li>
-                            </ul>
-                        </div>
-                        <div class="role-image">
-                            <img src="images/douleur_pied.jpg" alt="Douleur du pied">
-                        </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Posturologie - Analyse posturale</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>La posturologie est l'étude de la posture et de l'équilibre du corps. Le posturologue analyse les déséquilibres posturaux et leurs répercussions sur l'ensemble du corps. Il utilise des plateformes podométriques pour mesurer les pressions exercées sous les pieds et comprendre comment les appuis influencent la posture globale.</p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Pédicurie - Soins des pieds</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>La pédicurie concerne le traitement des affections de la peau et des ongles du pied. Le pédicure soigne :</p>
+                        <h4>Pathologies de la peau :</h4>
+                        <ul>
+                            <li>Cors, durillons, callosités</li>
+                            <li>Crevasses, verrues</li>
+                        </ul>
+                        <h4>Pathologies des ongles :</h4>
+                        <ul>
+                            <li>Onychosis, onychomycose</li>
+                            <li>Ongles incarnés, traumatisés</li>
+                            <li>Cors sous-unguaux, hématomes sous-unguaux</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Cabinet -->
+        <section id="cabinet" class="section" style="background: var(--bg-color);">
+            <div class="container">
+                <h2>Mes Cabinets</h2>
+                <div class="cards-grid">
+                    <div class="card fade-in">
+                        <img src="images/cabinet-argentan.jpg" alt="Cabinet de podologie Argentan" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                        <h3>Cabinet principal - Argentan</h3>
+                        <p><strong>7 rue des moulins<br>61200 ARGENTAN</strong></p>
+                        <p>Consultations et soins complets</p>
+                        <h4>Horaires :</h4>
+                        <ul>
+                            <li>Lun-Ven : 8h45-12h00 / 14h00-18h00</li>
+                            <li>Mer-Jeu : avec collaboratrice</li>
+                            <li>Samedi : Fermé</li>
+                        </ul>
+                    </div>
+                    <div class="card fade-in">
+                        <img src="images/cabinet-carrouges.jpg" alt="Cabinet de Carrouges" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                        <h3>Cabinet secondaire - Carrouges</h3>
+                        <p><strong>Pôle santé<br>22 rue du docteur Tremblin<br>61320 CARROUGES</strong></p>
+                        <p>Soins uniquement</p>
+                        <h4>Horaires :</h4>
+                        <ul>
+                            <li>Jeudi : 14h00-18h30</li>
+                        </ul>
+                        <p><em>Précisez lors de la prise de RDV si le soin doit se faire sur Carrouges</em></p>
+                    </div>
+                </div>
+
+                <div class="card fade-in" style="margin-top: 2rem;">
+                    <h3>Normes d'hygiène</h3>
+                    <ul>
+                        <li>Décontamination de l'instrumentation dans un bac à ultrasons</li>
+                        <li>Utilisation de lames à usage unique</li>
+                        <li>Ensachage professionnel</li>
+                        <li>Stérilisation dans un autoclave classe B</li>
+                        <li>Traçabilité complète de la stérilisation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tarifs -->
         <section id="tarifs" class="section">
             <div class="container">
                 <h2>Tarifs</h2>
-                <div class="tarifs-content">
-                    <table class="tarifs-table">
+                <div class="table-responsive">
+                    <table>
                         <thead>
                             <tr>
                                 <th>Prestation</th>
                                 <th>Tarif</th>
+                                <th>Remboursement SS</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Consultation pédicurie</td>
                                 <td>35€</td>
+                                <td>-</td>
                             </tr>
                             <tr>
-                                <td>Bilan podologique et posturologique</td>
+                                <td>Bilan podologique et suivi</td>
                                 <td>35€</td>
+                                <td>-</td>
                             </tr>
                             <tr>
-                                <td>Paire de semelles (pointure inférieure à 28)</td>
-                                <td>80€ <span class="remboursement">(Remboursement Sécurité Sociale : 25,87€)</span></td>
+                                <td>Paire de semelles (pointure &lt; 28)</td>
+                                <td>85€</td>
+                                <td>25,87€</td>
                             </tr>
                             <tr>
-                                <td>Paire de semelles (pointure entre 28 et 37)</td>
-                                <td>85€ <span class="remboursement">(Remboursement Sécurité Sociale : 27,88€)</span></td>
+                                <td>Paire de semelles (pointure 28-37)</td>
+                                <td>90€</td>
+                                <td>27,88€</td>
                             </tr>
                             <tr>
-                                <td>Paire de semelles (pointure supérieure ou égale à 37)</td>
-                                <td>90€ <span class="remboursement">(Remboursement Sécurité Sociale : 28,86€)</span></td>
+                                <td>Paire de semelles (pointure ≥ 37)</td>
+                                <td>95€</td>
+                                <td>28,86€</td>
                             </tr>
                         </tbody>
                     </table>
-                    
-                    <div class="prise-en-charge">
-                        <h3>Prise en charge</h3>
-                        <p>Les soins de pédicurie sont pris en charge par la sécurité sociale pour les patients diabétiques :</p>
-                        <ul>
-                            <li>Grade II : 5 fois par an</li>
-                            <li>Grade III : 8 fois par an</li>
-                        </ul>
-                        <p>
-                            <a href="https://www.ameli.fr/pedicure-podologue/exercice-professionnel/prescription-prise-charge/prise-charge-situation-type-soin/situation-patient-diabete" target="_blank" class="ameli-link">
-                                Plus d'informations sur Ameli.fr
-                            </a>
-                        </p>
+                </div>
+
+                <div class="card fade-in" style="margin-top: 2rem;">
+                    <h3>Prise en charge pour diabétiques</h3>
+                    <p>Les soins de pédicurie sont pris en charge par la sécurité sociale pour les patients diabétiques :</p>
+                    <ul>
+                        <li><strong>Grade II :</strong> 5 fois par an</li>
+                        <li><strong>Grade III :</strong> 8 fois par an</li>
+                    </ul>
+                    <p><a href="https://www.ameli.fr/pedicure-podologue/exercice-professionnel/prescription-prise-charge/prise-charge-situation-type-soin/situation-patient-diabete" target="_blank" rel="noopener noreferrer">Plus d'informations sur Ameli.fr</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section" style="background: var(--bg-color);">
+            <div class="container">
+                <h2>Contact</h2>
+                <div class="cards-grid">
+                    <div class="card fade-in">
+                        <h3>Prendre rendez-vous</h3>
+                        <p><strong><a href="tel:+33233365372" class="phone-link">02 33 36 53 72</a></strong></p>
+                        <p>Prise de rendez-vous uniquement par téléphone</p>
+                        <p><em>Sur rendez-vous uniquement</em></p>
+                    </div>
+                    <div class="card fade-in">
+                        <h3>Adresses</h3>
+                        <p><strong>Cabinet principal :</strong><br>
+                        7 rue des moulins<br>
+                        61200 ARGENTAN</p>
+                        <p><strong>Cabinet secondaire :</strong><br>
+                        Pôle santé<br>
+                        22 rue du docteur Tremblin<br>
+                        61320 CARROUGES</p>
+                    </div>
+                </div>
+                
+                <!-- Carte Google Maps -->
+                <div class="card fade-in" style="margin-top: 2rem; text-align: center;">
+                    <h3>Nous localiser</h3>
+                    <div class="map-container" id="google-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3158.7008123665137!2d-0.02271968747090548!3d48.74162027119695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480a006a8a5abff9%3A0x7cb9087b930d633f!2s7%20Rue%20des%20Moulins%2C%2061200%20Argentan!5e1!3m2!1sfr!2sfr!4v1747153353896!5m2!1sfr!2sfr" style="border:0; width: 100%; height: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="horaires" class="section">
+        <!-- FAQ -->
+        <section class="section">
             <div class="container">
-                <h2>Horaires d'ouverture</h2>
-                <table class="horaires-table">
-                    <thead>
-                        <tr>
-                            <th>Jour</th>
-                            <th>Matin</th>
-                            <th>Après-midi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Lundi</td>
-                            <td>8h45 - 12h00 <span class="lieu">(cabinet)</span></td>
-                            <td>14h00 - 18h00 <span class="lieu">(cabinet)</span></td>
-                        </tr>
-                        <tr>
-                            <td>Mardi</td>
-                            <td>8h45 - 12h00 <span class="lieu">(domicile)</span></td>
-                            <td>14h00 - 18h00 <span class="lieu">(cabinet)</span></td>
-                        </tr>
-                        <tr>
-                            <td>Mercredi</td>
-                            <td>8h45 - 12h00 <span class="lieu">(avec collaboratrice au cabinet)</span></td>
-                            <td>14h00 - 17h15 <span class="lieu">(avec collaboratrice au cabinet)</span></td>
-                        </tr>
-                        <tr>
-                            <td>Jeudi</td>
-                            <td>8h45 - 12h00 <span class="lieu">(avec collaboratrice au cabinet)</span></td>
-                            <td>14h00 - 18h30 <span class="lieu">(au cabinet de Carrouges)</span></td>
-                        </tr>
-                        <tr>
-                            <td>Vendredi</td>
-                            <td>8h45 - 12h00 <span class="lieu">(cabinet)</span></td>
-                            <td>14h00 - 18h00 <span class="lieu">(cabinet)</span></td>
-                        </tr>
-                        <tr>
-                            <td>Samedi</td>
-                            <td colspan="2" class="ferme">Fermé</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="localisation" class="section">
-            <div class="container">
-                <h2>Localisation</h2>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5262.217405405004!2d-0.0227143236155281!3d48.74162027131649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480a006a8a5abff9%3A0x7cb9087b930d633f!2s7%20Rue%20des%20Moulins%2C%2061200%20Argentan!5e0!3m2!1sfr!2sfr!4v1741980996667!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <h2>Questions fréquentes</h2>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Quand consulter un podologue ?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Consultez un podologue en cas de :</p>
+                        <ul>
+                            <li>Douleurs persistantes aux pieds, chevilles, genoux ou dos</li>
+                            <li>Déformations visibles (hallux valgus, orteils en griffe)</li>
+                            <li>Problèmes de peau ou d'ongles récurrents</li>
+                            <li>Troubles de l'équilibre ou de la marche</li>
+                            <li>Usure anormale des chaussures</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="adresse-complete">
-                    <h3>Cabinet principal</h3>
-                    <p>7 rue des moulins, 61200 ARGENTAN</p>
-                    <h3>Cabinet secondaire</h3>
-                    <p>Pôle santé, 22 rue du docteur Tremblin, 61320 CARROUGES (soins uniquement)</p>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Comment se déroule une consultation ?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Une consultation comprend :</p>
+                        <ol>
+                            <li>Un examen clinique complet des pieds</li>
+                            <li>Une analyse de la marche et de la posture</li>
+                            <li>Des tests spécifiques selon les symptômes</li>
+                            <li>Un diagnostic et un plan de traitement personnalisé</li>
+                            <li>Des conseils préventifs et des recommandations</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Les semelles sont-elles remboursées ?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Oui, les semelles orthopédiques sont partiellement remboursées par la Sécurité Sociale :</p>
+                        <ul>
+                            <li>Remboursement de base selon la pointure</li>
+                            <li>Prise en charge supplémentaire possible avec votre mutuelle</li>
+                            <li>Prescription médicale nécessaire</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-info">
-                    <h3>Sophie Dudouit</h3>
-                    <p>Pédicure Podologue Posturologue D.E.</p>
-                    <p>02 33 36 53 72</p>
-                    <p>7 rue des moulins, 61200 ARGENTAN</p>
-                    <p>Pôle santé, 22 rue du docteur Tremblin, 61320 CARROUGES</p>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>7 rue des moulins<br>61200 ARGENTAN</p>
+                    <p><a href="tel:+33233365372">02 33 36 53 72</a></p>
                 </div>
-                <div class="footer-horaires">
-                    <h3>Horaires d'ouverture</h3>
-                    <p>Lundi au vendredi : 8h45 - 18h30</p>
-                    <p>Samedi : Fermé</p>
+                <div class="footer-section">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li><a href="#mentions-legales">Mentions légales</a></li>
+                        <li><a href="#politique-confidentialite">Politique de confidentialité</a></li>
+                        <li><a href="https://www.ameli.fr" target="_blank" rel="noopener noreferrer">Ameli.fr</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Informations légales</h4>
+                    <p>Sophie Dudouit<br>
+                    Pédicure Podologue D.E.<br>
+                    N° ADELI : 618005482<br>
+                    SIRET : 41359647900050</p>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; <span id="current-year">2025</span> - Cabinet de Podologie Sophie Dudouit</p>
+            <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #555;">
+                <p>&copy; 2025 - Cabinet de Podologie Sophie Dudouit. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Bannière RGPD -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="container">
+            <p>Ce site utilise des cookies techniques et Google Analytics pour améliorer votre expérience et analyser notre audience. En continuant à naviguer, vous acceptez notre <a href="#politique-confidentialite">politique de confidentialité</a>.</p>
+            <button onclick="acceptCookies()">Accepter</button>
+            <button onclick="refuseCookies()" style="background: transparent; border: 1px solid white;">Refuser</button>
+        </div>
+    </div>
+
+    <!-- Modales pour mentions légales et politique de confidentialité -->
+    <div id="mentionsModal" class="modal">
+        <div class="modal-content">
+            <h2>Mentions légales</h2>
+            <p><strong>Éditeur du site :</strong><br>
+            Sophie Dudouit<br>
+            Pédicure Podologue D.E. Posturologue<br>
+            7 rue des moulins<br>
+            61200 ARGENTAN<br>
+            Téléphone : 02 33 36 53 72</p>
+            
+            <p><strong>Numéro ADELI :</strong> 618005482<br>
+            <strong>SIRET :</strong> 41359647900050<br>
+            <strong>Ordre professionnel :</strong> Conseil National de l'Ordre des Pédicures-Podologues</p>
+            
+            <p><strong>Hébergeur :</strong> O2Switch SARL<br>
+                18 bis rue Claude Depasse<br>
+                63000 Clermont-Ferrand<br>
+                Téléphone : 04 44 44 60 40<br>
+                Site web : www.o2switch.fr</p>
+            
+            <p><strong>Responsable de publication :</strong> Sophie Dudouit</p>
+            
+            <button onclick="closeModal('mentionsModal')">Fermer</button>
+        </div>
+    </div>
+
+    <div id="confidentialiteModal" class="modal">
+        <div class="modal-content">
+            <h2>Politique de confidentialité</h2>
+            
+            <h3>Collecte des données</h3>
+            <p>Nous collectons uniquement les données nécessaires pour vous proposer nos services :</p>
+            <ul>
+                <li>Nom, prénom, téléphone pour la prise de rendez-vous</li>
+                <li>Informations médicales relatives aux soins podologiques</li>
+                <li>Cookies techniques nécessaires au fonctionnement du site</li>
+                <li>Données de navigation anonymes via Google Analytics</li>
+            </ul>
+            
+            <h3>Utilisation des données</h3>
+            <p>Vos données sont utilisées exclusivement pour :</p>
+            <ul>
+                <li>La prise de rendez-vous et le suivi médical</li>
+                <li>L'amélioration de nos services</li>
+                <li>L'analyse anonyme de la fréquentation du site (Google Analytics)</li>
+                <li>Le respect de nos obligations légales</li>
+            </ul>
+            
+            <h3>Google Analytics</h3>
+            <p>Ce site utilise Google Analytics pour analyser l'utilisation du site web. Google Analytics collecte des informations anonymes telles que le nombre de visiteurs du site et les pages les plus populaires. Ces informations nous aident à améliorer notre site et nos services.</p>
+            <p>Google Analytics utilise des cookies pour collecter ces informations de manière anonyme. Vous pouvez désactiver Google Analytics en installant le module complémentaire de navigateur pour la désactivation de Google Analytics.</p>
+            
+            <h3>Vos droits</h3>
+            <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+            <ul>
+                <li>Droit d'accès à vos données</li>
+                <li>Droit de rectification</li>
+                <li>Droit à l'effacement</li>
+                <li>Droit à la portabilité</li>
+                <li>Droit d'opposition</li>
+            </ul>
+            
+            <p>Pour exercer ces droits, contactez-nous au 02 33 36 53 72 ou par courrier.</p>
+            
+            <h3>Conservation des données</h3>
+            <p>Vos données médicales sont conservées conformément à la réglementation en vigueur (20 ans pour les dossiers médicaux). Les données Google Analytics sont automatiquement supprimées après 26 mois.</p>
+            
+            <h3>Cookies</h3>
+            <p>Ce site utilise :</p>
+            <ul>
+                <li>Des cookies techniques nécessaires au fonctionnement du site</li>
+                <li>Des cookies Google Analytics pour analyser l'utilisation du site</li>
+            </ul>
+            <p>Vous pouvez accepter ou refuser les cookies via la bannière qui s'affiche lors de votre première visite.</p>
+            
+            <button onclick="closeModal('confidentialiteModal')">Fermer</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
 </body>
 </html>
