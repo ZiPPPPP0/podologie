@@ -1,77 +1,184 @@
 /* ============================================
-   MODE SOMBRE - THEME TOGGLE
+   🎯 CABINET SOPHIE DUDOUIT - JAVASCRIPT
+   Design System Implementation
    ============================================ */
-function initTheme() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.querySelector('.theme-icon');
-    const savedTheme = localStorage.getItem('theme') || 'light';
 
-    // Appliquer le thème sauvegardé
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme, themeIcon);
-
-    // Toggle theme au clic
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme, themeIcon);
-    });
-}
-
-function updateThemeIcon(theme, icon) {
-    icon.textContent = theme === 'light' ? '🌙' : '☀️';
-}
+'use strict';
 
 /* ============================================
-   CALCUL AUTOMATIQUE DES ANNÉES D'EXPÉRIENCE
+   THEME MANAGEMENT - MODE SOMBRE
    ============================================ */
-function updateExperience() {
-    const experienceElement = document.getElementById('experience-years');
-    if (!experienceElement) return;
+const ThemeManager = {
+    init() {
+        this.themeToggle = document.getElementById('theme-toggle');
+        this.themeIcon = document.querySelector('.theme-icon');
+        this.currentTheme = localStorage.getItem('theme') || 'light';
 
-    const installationDate = new Date('1999-09-01');
-    const currentDate = new Date();
-    const years = currentDate.getFullYear() - installationDate.getFullYear();
-    experienceElement.textContent = years;
-}
+        // Appliquer le thème sauvegardé
+        this.applyTheme(this.currentTheme);
 
-/* ============================================
-   MENU MOBILE
-   ============================================ */
-function initMobileMenu() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (!navToggle || !navLinks) return;
-
-    navToggle.addEventListener('click', () => {
-        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', !isExpanded);
-        navLinks.classList.toggle('active');
-    });
-
-    // Fermer le menu lors du clic sur un lien
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navToggle.setAttribute('aria-expanded', 'false');
-            navLinks.classList.remove('active');
-        });
-    });
-
-    // Fermer le menu lors du clic en dehors
-    document.addEventListener('click', (e) => {
-        if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
-            navToggle.setAttribute('aria-expanded', 'false');
-            navLinks.classList.remove('active');
+        // Event listener
+        if (this.themeToggle) {
+            this.themeToggle.addEventListener('click', () => this.toggleTheme());
         }
-    });
-}
+    },
+
+    applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        this.updateIcon(theme);
+        this.currentTheme = theme;
+    },
+
+    toggleTheme() {
+        const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+        this.applyTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        // Animation du toggle
+        if (this.themeToggle) {
+            this.themeToggle.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                this.themeToggle.style.transform = '';
+            }, 350);
+        }
+    },
+
+    updateIcon(theme) {
+        if (this.themeIcon) {
+            this.themeIcon.textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+    }
+};
 
 /* ============================================
-   ACCORDÉONS
+   NAVIGATION
+   ============================================ */
+const Navigation = {
+    init() {
+        this.header = document.querySelector('header');
+        this.navToggle = document.querySelector('.nav-toggle');
+        this.navLinks = document.querySelector('.nav-links');
+        this.navItems = document.querySelectorAll('.nav-links a');
+        this.sections = document.querySelectorAll('section[id]');
+
+        this.setupMobileMenu();
+        this.setupSmoothScroll();
+        this.setupScrollDetection();
+        this.setupActiveLink();
+    },
+
+    setupMobileMenu() {
+        if (!this.navToggle || !this.navLinks) return;
+
+        // Toggle menu
+        this.navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleMobileMenu();
+        });
+
+        // Fermer le menu au clic sur un lien
+        this.navItems.forEach(link => {
+            link.addEventListener('click', () => {
+                this.closeMobileMenu();
+            });
+        });
+
+        // Fermer le menu au clic extérieur
+        document.addEventListener('click', (e) => {
+            if (!this.navToggle.contains(e.target) && !this.navLinks.contains(e.target)) {
+                this.closeMobileMenu();
+            }
+        });
+    },
+
+    toggleMobileMenu() {
+        const isExpanded = this.navToggle.getAttribute('aria-expanded') === 'true';
+        this.navToggle.setAttribute('aria-expanded', !isExpanded);
+        this.navLinks.classList.toggle('active');
+
+        // Empêcher le scroll du body quand le menu est ouvert
+        if (!isExpanded) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    },
+
+    closeMobileMenu() {
+        this.navToggle.setAttribute('aria-expanded', 'false');
+        this.navLinks.classList.remove('active');
+        document.body.style.overflow = '';
+    },
+
+    setupSmoothScroll() {
+        this.navItems.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+
+                // Ignorer les liens vers les modales
+                if (href === '#mentions-legales' || href === '#politique-confidentialite') {
+                    return;
+                }
+
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    const headerOffset = 90;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    },
+
+    setupScrollDetection() {
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            // Ajouter classe "scrolled" au header
+            if (currentScroll > 50) {
+                this.header.classList.add('scrolled');
+            } else {
+                this.header.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+    },
+
+    setupActiveLink() {
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const scrollPosition = window.scrollY + 150;
+
+            this.sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            this.navItems.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    }
+};
+
+/* ============================================
+   ACCORDIONS
    ============================================ */
 function toggleAccordion(header) {
     const content = header.nextElementSibling;
@@ -90,272 +197,255 @@ function toggleAccordion(header) {
     if (!isActive) {
         content.classList.add('active');
         icon.textContent = '−';
+
+        // Scroll vers l'accordéon si nécessaire
+        setTimeout(() => {
+            const rect = header.getBoundingClientRect();
+            if (rect.top < 100) {
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 350);
     }
 }
 
 /* ============================================
-   ANIMATIONS AU DÉFILEMENT
+   ANIMATIONS - INTERSECTION OBSERVER
    ============================================ */
-function animateOnScroll() {
-    const elements = document.querySelectorAll('.fade-in');
-    const windowHeight = window.innerHeight;
-
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 100;
-
-        if (elementTop < windowHeight - elementVisible) {
-            element.classList.add('visible');
+const AnimationManager = {
+    init() {
+        // Vérifier le support de Intersection Observer
+        if (!('IntersectionObserver' in window)) {
+            // Fallback : afficher tous les éléments
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.classList.add('visible');
+            });
+            return;
         }
-    });
-}
+
+        const options = {
+            root: null,
+            rootMargin: '0px 0px -100px 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optionnel : arrêter d'observer après animation
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        // Observer tous les éléments avec la classe fade-in
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    }
+};
 
 /* ============================================
-   NAVIGATION ACTIVE
+   MODALS
    ============================================ */
-function updateActiveLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
+const ModalManager = {
+    init() {
+        this.setupModalTriggers();
+        this.setupModalClose();
+        this.setupKeyboardShortcuts();
+    },
 
-    let current = '';
-    const scrollPosition = window.scrollY + 150;
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-            link.classList.add('active');
-        }
-    });
-}
-
-/* ============================================
-   NAVIGATION FLUIDE
-   ============================================ */
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-
-            // Ignorer les liens vers les modales
-            if (href === '#mentions-legales' || href === '#politique-confidentialite') {
-                return;
+    setupModalTriggers() {
+        document.addEventListener('click', (e) => {
+            // Mentions légales
+            if (e.target.matches('a[href="#mentions-legales"]')) {
+                e.preventDefault();
+                this.openModal('mentionsModal');
             }
 
-            const target = document.querySelector(href);
-            if (target) {
+            // Politique de confidentialité
+            if (e.target.matches('a[href="#politique-confidentialite"]')) {
                 e.preventDefault();
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                this.openModal('confidentialiteModal');
+            }
+        });
+    },
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
+    setupModalClose() {
+        // Fermer en cliquant sur le backdrop
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    this.closeModal(modal.id);
+                }
+            });
+        });
+
+        // Boutons de fermeture
+        document.querySelectorAll('.modal button').forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = this.closest('.modal');
+                if (modal) {
+                    ModalManager.closeModal(modal.id);
+                }
+            });
+        });
+    },
+
+    setupKeyboardShortcuts() {
+        document.addEventListener('keydown', (e) => {
+            // Escape pour fermer les modales
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    if (modal.style.display === 'flex') {
+                        this.closeModal(modal.id);
+                    }
                 });
             }
         });
-    });
-}
+    },
 
-/* ============================================
-   MODALES
-   ============================================ */
-function openModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+    openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            // Focus sur le modal pour accessibilité
+            setTimeout(() => {
+                const modalContent = modal.querySelector('.modal-content');
+                if (modalContent) {
+                    modalContent.focus();
+                }
+            }, 100);
+        }
+    },
+
+    closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
     }
-}
-
-function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-}
-
-function initModals() {
-    // Liens vers les modales
-    document.addEventListener('click', (e) => {
-        if (e.target.matches('a[href="#mentions-legales"]')) {
-            e.preventDefault();
-            openModal('mentionsModal');
-        }
-
-        if (e.target.matches('a[href="#politique-confidentialite"]')) {
-            e.preventDefault();
-            openModal('confidentialiteModal');
-        }
-    });
-
-    // Fermeture en cliquant à l'extérieur
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal(modal.id);
-            }
-        });
-    });
-
-    // Fermeture avec Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            document.querySelectorAll('.modal').forEach(modal => {
-                closeModal(modal.id);
-            });
-        }
-    });
-}
+};
 
 /* ============================================
-   GESTION DES ERREURS D'IMAGES
+   UTILITIES
    ============================================ */
-function handleImageErrors() {
-    document.querySelectorAll('img').forEach(img => {
-        img.addEventListener('error', function() {
-            this.style.opacity = '0.3';
-            this.alt = 'Image non disponible';
-        });
-    });
-}
+const Utils = {
+    // Calcul automatique des années d'expérience
+    updateExperience() {
+        const experienceElement = document.getElementById('experience-years');
+        if (!experienceElement) return;
 
-/* ============================================
-   HEADER SCROLL EFFECT
-   ============================================ */
-function initHeaderScroll() {
-    const header = document.querySelector('header');
-    let lastScroll = 0;
+        const startDate = new Date('1999-09-01');
+        const currentDate = new Date();
+        const years = currentDate.getFullYear() - startDate.getFullYear();
 
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-
-        if (currentScroll > 100) {
-            header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)';
-        }
-
-        lastScroll = currentScroll;
-    });
-}
-
-/* ============================================
-   INTERSECTION OBSERVER POUR ANIMATIONS
-   ============================================ */
-function initIntersectionObserver() {
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in').forEach(element => {
-        observer.observe(element);
-    });
-}
-
-/* ============================================
-   INITIALISATION AU CHARGEMENT
-   ============================================ */
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialiser le thème
-    initTheme();
-
-    // Mettre à jour l'expérience
-    updateExperience();
-
-    // Menu mobile
-    initMobileMenu();
-
-    // Navigation fluide
-    initSmoothScroll();
-
-    // Modales
-    initModals();
+        experienceElement.textContent = years;
+    },
 
     // Gestion des erreurs d'images
-    handleImageErrors();
+    handleImageErrors() {
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                this.style.opacity = '0.5';
+                this.style.filter = 'grayscale(100%)';
+                this.alt = 'Image non disponible';
+            });
+        });
+    },
 
-    // Header scroll effect
-    initHeaderScroll();
+    // Lazy loading natif des images
+    enableLazyLoading() {
+        if ('loading' in HTMLImageElement.prototype) {
+            document.querySelectorAll('img').forEach(img => {
+                if (!img.hasAttribute('loading')) {
+                    img.setAttribute('loading', 'lazy');
+                }
+            });
+        }
+    },
 
-    // Intersection Observer pour animations
-    if ('IntersectionObserver' in window) {
-        initIntersectionObserver();
-    } else {
-        // Fallback pour navigateurs anciens
-        document.querySelectorAll('.fade-in').forEach(el => {
-            el.classList.add('visible');
+    // Amélioration de l'accessibilité pour navigation clavier
+    improveKeyboardNavigation() {
+        let isUsingKeyboard = false;
+
+        // Détecter utilisation clavier
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                isUsingKeyboard = true;
+                document.body.classList.add('user-is-tabbing');
+            }
+        });
+
+        // Détecter utilisation souris
+        document.addEventListener('mousedown', () => {
+            isUsingKeyboard = false;
+            document.body.classList.remove('user-is-tabbing');
         });
     }
-});
+};
 
 /* ============================================
-   ÉVÉNEMENTS DE SCROLL
+   PERFORMANCE MONITORING
    ============================================ */
-let scrollTimeout;
-window.addEventListener('scroll', () => {
-    // Debounce pour optimiser les performances
-    if (scrollTimeout) {
-        window.cancelAnimationFrame(scrollTimeout);
+const Performance = {
+    init() {
+        // Mesurer le temps de chargement
+        window.addEventListener('load', () => {
+            const loadTime = performance.timing.domContentLoadedEventEnd - performance.timing.navigationStart;
+            console.log(`⚡ Page chargée en ${loadTime}ms`);
+        });
     }
-
-    scrollTimeout = window.requestAnimationFrame(() => {
-        updateActiveLink();
-
-        // Fallback si Intersection Observer n'est pas supporté
-        if (!('IntersectionObserver' in window)) {
-            animateOnScroll();
-        }
-    });
-});
+};
 
 /* ============================================
-   ACCESSIBILITÉ - FOCUS VISIBLE
+   INITIALISATION
    ============================================ */
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Tab') {
-        document.body.classList.add('user-is-tabbing');
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('%c✨ Cabinet Sophie Dudouit', 'font-size: 20px; font-weight: 700; color: #2670c7; font-family: Inter;');
+    console.log('%cDesign moderne et accessible', 'font-size: 14px; color: #6b7280; font-family: Inter;');
+
+    // Initialiser tous les modules
+    ThemeManager.init();
+    Navigation.init();
+    AnimationManager.init();
+    ModalManager.init();
+
+    // Utilitaires
+    Utils.updateExperience();
+    Utils.handleImageErrors();
+    Utils.enableLazyLoading();
+    Utils.improveKeyboardNavigation();
+
+    // Performance monitoring (dev only)
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        Performance.init();
     }
 });
 
-document.addEventListener('mousedown', () => {
-    document.body.classList.remove('user-is-tabbing');
-});
-
 /* ============================================
-   PERFORMANCE - LAZY LOADING (optionnel)
+   SERVICE WORKER (optionnel - PWA)
    ============================================ */
-if ('loading' in HTMLImageElement.prototype) {
-    // Le navigateur supporte loading="lazy" nativement
-    document.querySelectorAll('img').forEach(img => {
-        if (!img.hasAttribute('loading')) {
-            img.setAttribute('loading', 'lazy');
-        }
+if ('serviceWorker' in navigator && 'production' === 'production') {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => console.log('SW registered:', registration))
+            .catch(err => console.log('SW registration failed:', err));
     });
 }
 
 /* ============================================
-   CONSOLE MESSAGE
+   EXPORTS (pour tests éventuels)
    ============================================ */
-console.log('%c👋 Cabinet de Podologie Sophie Dudouit', 'font-size: 20px; font-weight: bold; color: #2563eb;');
-console.log('%cSite web moderne et accessible', 'font-size: 14px; color: #64748b;');
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        ThemeManager,
+        Navigation,
+        AnimationManager,
+        ModalManager,
+        Utils
+    };
+}
