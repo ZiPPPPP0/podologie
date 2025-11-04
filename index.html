@@ -50,9 +50,14 @@
     }
     </script>
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
@@ -69,12 +74,19 @@
     </script>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Passer au contenu principal</a>
-    
     <header role="banner">
         <nav class="container" role="navigation" aria-label="Navigation principale">
             <div class="logo">Cabinet Sophie Dudouit</div>
-            <button class="nav-toggle" aria-label="Menu mobile" aria-expanded="false">☰</button>
+            <div class="nav-right">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Changer de th\u00e8me">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="nav-toggle" aria-label="Menu mobile" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#praticien">Le praticien</a></li>
@@ -482,15 +494,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Bannière RGPD -->
-    <div class="cookie-banner" id="cookieBanner">
-        <div class="container">
-            <p>Ce site utilise des cookies techniques et Google Analytics pour améliorer votre expérience et analyser notre audience. En continuant à naviguer, vous acceptez notre <a href="#politique-confidentialite">politique de confidentialité</a>.</p>
-            <button onclick="acceptCookies()">Accepter</button>
-            <button onclick="refuseCookies()" style="background: transparent; border: 1px solid white;">Refuser</button>
-        </div>
-    </div>
 
     <!-- Modales pour mentions légales et politique de confidentialité -->
     <div id="mentionsModal" class="modal">

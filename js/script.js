@@ -1,113 +1,134 @@
-// Calcul automatique des années d'expérience
+/* ============================================
+   MODE SOMBRE - THEME TOGGLE
+   ============================================ */
+function initTheme() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.querySelector('.theme-icon');
+    const savedTheme = localStorage.getItem('theme') || 'light';
+
+    // Appliquer le thème sauvegardé
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme, themeIcon);
+
+    // Toggle theme au clic
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme, themeIcon);
+    });
+}
+
+function updateThemeIcon(theme, icon) {
+    icon.textContent = theme === 'light' ? '🌙' : '☀️';
+}
+
+/* ============================================
+   CALCUL AUTOMATIQUE DES ANNÉES D'EXPÉRIENCE
+   ============================================ */
 function updateExperience() {
+    const experienceElement = document.getElementById('experience-years');
+    if (!experienceElement) return;
+
     const installationDate = new Date('1999-09-01');
     const currentDate = new Date();
     const years = currentDate.getFullYear() - installationDate.getFullYear();
-    document.getElementById('experience-years').textContent = years;
+    experienceElement.textContent = years;
 }
 
-// Menu mobile toggle
-function toggleMobileMenu() {
-    const navLinks = document.querySelector('.nav-links');
+/* ============================================
+   MENU MOBILE
+   ============================================ */
+function initMobileMenu() {
     const navToggle = document.querySelector('.nav-toggle');
-    
-    navLinks.classList.toggle('active');
-    navToggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+    const navLinks = document.querySelector('.nav-links');
+
+    if (!navToggle || !navLinks) return;
+
+    navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        navLinks.classList.toggle('active');
+    });
+
+    // Fermer le menu lors du clic sur un lien
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Fermer le menu lors du clic en dehors
+    document.addEventListener('click', (e) => {
+        if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navLinks.classList.remove('active');
+        }
+    });
 }
 
-// Accordéons
+/* ============================================
+   ACCORDÉONS
+   ============================================ */
 function toggleAccordion(header) {
     const content = header.nextElementSibling;
     const icon = header.querySelector('span:last-child');
-    
-    if (content.classList.contains('active')) {
-        content.classList.remove('active');
-        icon.textContent = '+';
-    } else {
-        // Fermer tous les autres accordéons
-        document.querySelectorAll('.accordion-content').forEach(acc => {
-            acc.classList.remove('active');
-        });
-        document.querySelectorAll('.accordion-header span:last-child').forEach(icon => {
-            icon.textContent = '+';
-        });
-        
-        // Ouvrir l'accordéon cliqué
+    const isActive = content.classList.contains('active');
+
+    // Fermer tous les accordéons
+    document.querySelectorAll('.accordion-content').forEach(acc => {
+        acc.classList.remove('active');
+    });
+    document.querySelectorAll('.accordion-header span:last-child').forEach(i => {
+        i.textContent = '+';
+    });
+
+    // Ouvrir l'accordéon cliqué s'il était fermé
+    if (!isActive) {
         content.classList.add('active');
         icon.textContent = '−';
     }
 }
 
-// Animation des cartes au défilement
+/* ============================================
+   ANIMATIONS AU DÉFILEMENT
+   ============================================ */
 function animateOnScroll() {
     const elements = document.querySelectorAll('.fade-in');
-    
+    const windowHeight = window.innerHeight;
+
     elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
+        const elementVisible = 100;
+
+        if (elementTop < windowHeight - elementVisible) {
             element.classList.add('visible');
         }
     });
 }
 
-// Gestion RGPD
-function showCookieBanner() {
-    const banner = document.getElementById('cookieBanner');
-    if (!localStorage.getItem('cookieConsent')) {
-        banner.classList.add('show');
-    }
-}
-
-function acceptCookies() {
-    localStorage.setItem('cookieConsent', 'accepted');
-    document.getElementById('cookieBanner').classList.remove('show');
-}
-
-function refuseCookies() {
-    localStorage.setItem('cookieConsent', 'refused');
-    document.getElementById('cookieBanner').classList.remove('show');
-}
-
-// Gestion des modales
-function openModal(modalId) {
-    document.getElementById(modalId).style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Empêche le scroll de la page
-}
-
-function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
-    document.body.style.overflow = 'auto'; // Remet le scroll
-}
-
-// Navigation fluide
-function smoothScroll(e) {
-    e.preventDefault();
-    const target = document.querySelector(e.target.getAttribute('href'));
-    if (target) {
-        target.scrollIntoView({
-            behavior: 'smooth'
-        });
-    }
-}
-
-// Mise en évidence du lien actif
+/* ============================================
+   NAVIGATION ACTIVE
+   ============================================ */
 function updateActiveLink() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-links a');
-    
+
     let current = '';
-    
+    const scrollPosition = window.scrollY + 150;
+
     sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
+        const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
-        
-        if (sectionTop <= 150 && sectionTop + sectionHeight > 150) {
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === '#' + current) {
@@ -116,150 +137,225 @@ function updateActiveLink() {
     });
 }
 
-// Initialisation au chargement de la page
-document.addEventListener('DOMContentLoaded', function() {
-    updateExperience();
-    showCookieBanner();
-    
-    // Menu mobile
-    document.querySelector('.nav-toggle').addEventListener('click', toggleMobileMenu);
-    
-    // Navigation fluide
+/* ============================================
+   NAVIGATION FLUIDE
+   ============================================ */
+function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', smoothScroll);
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+
+            // Ignorer les liens vers les modales
+            if (href === '#mentions-legales' || href === '#politique-confidentialite') {
+                return;
+            }
+
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
-    
-    // Liens modales
-    document.addEventListener('click', function(e) {
+}
+
+/* ============================================
+   MODALES
+   ============================================ */
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+function initModals() {
+    // Liens vers les modales
+    document.addEventListener('click', (e) => {
         if (e.target.matches('a[href="#mentions-legales"]')) {
             e.preventDefault();
             openModal('mentionsModal');
         }
-        
+
         if (e.target.matches('a[href="#politique-confidentialite"]')) {
             e.preventDefault();
             openModal('confidentialiteModal');
         }
     });
-    
-    // Fermeture des modales en cliquant à l'extérieur
-    document.getElementById('mentionsModal').addEventListener('click', function(e) {
-        if (e.target === this) closeModal('mentionsModal');
-    });
-    
-    document.getElementById('confidentialiteModal').addEventListener('click', function(e) {
-        if (e.target === this) closeModal('confidentialiteModal');
-    });
-    
-    // Fermeture avec la touche Escape
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeModal('mentionsModal');
-            closeModal('confidentialiteModal');
-        }
-    });
-});
 
-// Événements de scroll
-document.addEventListener('scroll', function() {
-    animateOnScroll();
-    updateActiveLink();
-});
-
-// Gestion des erreurs d'images
-document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('error', function() {
-        this.style.display = 'none';
-        // Ou remplacer par une image par défaut
-        // this.src = 'images/placeholder.svg';
-    });
-});
-
-// Validation simple pour le futur formulaire de contact (si ajouté)
-function validateContactForm() {
-    const name = document.getElementById('name');
-    const email = document.getElementById('email');
-    const message = document.getElementById('message');
-    let isValid = true;
-    
-    // Reset des erreurs précédentes
-    document.querySelectorAll('.error').forEach(error => error.remove());
-    
-    // Validation du nom
-    if (!name.value.trim()) {
-        showError(name, 'Le nom est requis');
-        isValid = false;
-    }
-    
-    // Validation de l'email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email.value.trim()) {
-        showError(email, 'L\'email est requis');
-        isValid = false;
-    } else if (!emailRegex.test(email.value)) {
-        showError(email, 'L\'email n\'est pas valide');
-        isValid = false;
-    }
-    
-    // Validation du message
-    if (!message.value.trim()) {
-        showError(message, 'Le message est requis');
-        isValid = false;
-    }
-    
-    return isValid;
-}
-
-function showError(input, message) {
-    const error = document.createElement('div');
-    error.className = 'error';
-    error.style.color = 'red';
-    error.style.fontSize = '0.8em';
-    error.style.marginTop = '5px';
-    error.textContent = message;
-    input.parentNode.appendChild(error);
-}
-
-// Performance : Lazy loading des images (pour une future implémentation)
-function lazyLoadImages() {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                observer.unobserve(img);
+    // Fermeture en cliquant à l'extérieur
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal(modal.id);
             }
         });
     });
-    
-    images.forEach(img => imageObserver.observe(img));
-}
 
-// Google Analytics (à implémenter si nécessaire)
-function initGoogleAnalytics() {
-    // À implémenter avec le code de suivi GA4
-    // window.dataLayer = window.dataLayer || [];
-    // function gtag(){dataLayer.push(arguments);}
-    // gtag('js', new Date());
-    // gtag('config', 'GA_MEASUREMENT_ID');
-}
-
-// Accessibility helper
-function improveFocus() {
-    // Améliore la visibilité du focus pour l'accessibilité
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Tab') {
-            document.body.classList.add('user-is-tabbing');
+    // Fermeture avec Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal').forEach(modal => {
+                closeModal(modal.id);
+            });
         }
     });
-    
-    document.addEventListener('mousedown', function() {
-        document.body.classList.remove('user-is-tabbing');
+}
+
+/* ============================================
+   GESTION DES ERREURS D'IMAGES
+   ============================================ */
+function handleImageErrors() {
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', function() {
+            this.style.opacity = '0.3';
+            this.alt = 'Image non disponible';
+        });
     });
 }
 
-// Initialisation des améliorations d'accessibilité
-document.addEventListener('DOMContentLoaded', improveFocus);
+/* ============================================
+   HEADER SCROLL EFFECT
+   ============================================ */
+function initHeaderScroll() {
+    const header = document.querySelector('header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+            header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)';
+        }
+
+        lastScroll = currentScroll;
+    });
+}
+
+/* ============================================
+   INTERSECTION OBSERVER POUR ANIMATIONS
+   ============================================ */
+function initIntersectionObserver() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(element => {
+        observer.observe(element);
+    });
+}
+
+/* ============================================
+   INITIALISATION AU CHARGEMENT
+   ============================================ */
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialiser le thème
+    initTheme();
+
+    // Mettre à jour l'expérience
+    updateExperience();
+
+    // Menu mobile
+    initMobileMenu();
+
+    // Navigation fluide
+    initSmoothScroll();
+
+    // Modales
+    initModals();
+
+    // Gestion des erreurs d'images
+    handleImageErrors();
+
+    // Header scroll effect
+    initHeaderScroll();
+
+    // Intersection Observer pour animations
+    if ('IntersectionObserver' in window) {
+        initIntersectionObserver();
+    } else {
+        // Fallback pour navigateurs anciens
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.classList.add('visible');
+        });
+    }
+});
+
+/* ============================================
+   ÉVÉNEMENTS DE SCROLL
+   ============================================ */
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    // Debounce pour optimiser les performances
+    if (scrollTimeout) {
+        window.cancelAnimationFrame(scrollTimeout);
+    }
+
+    scrollTimeout = window.requestAnimationFrame(() => {
+        updateActiveLink();
+
+        // Fallback si Intersection Observer n'est pas supporté
+        if (!('IntersectionObserver' in window)) {
+            animateOnScroll();
+        }
+    });
+});
+
+/* ============================================
+   ACCESSIBILITÉ - FOCUS VISIBLE
+   ============================================ */
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+        document.body.classList.add('user-is-tabbing');
+    }
+});
+
+document.addEventListener('mousedown', () => {
+    document.body.classList.remove('user-is-tabbing');
+});
+
+/* ============================================
+   PERFORMANCE - LAZY LOADING (optionnel)
+   ============================================ */
+if ('loading' in HTMLImageElement.prototype) {
+    // Le navigateur supporte loading="lazy" nativement
+    document.querySelectorAll('img').forEach(img => {
+        if (!img.hasAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+        }
+    });
+}
+
+/* ============================================
+   CONSOLE MESSAGE
+   ============================================ */
+console.log('%c👋 Cabinet de Podologie Sophie Dudouit', 'font-size: 20px; font-weight: bold; color: #2563eb;');
+console.log('%cSite web moderne et accessible', 'font-size: 14px; color: #64748b;');
