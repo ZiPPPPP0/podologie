@@ -535,26 +535,32 @@ nav {
     color: var(--text-secondary);
 }
 
+.contact-item {
+    position: relative;
+    padding-left: var(--space-8);
+}
+
 .contact-item::before {
-    content: '•';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
     color: var(--primary);
-    font-size: 1.5rem;
-    line-height: 0;
+    font-size: 1.125rem;
 }
 
 .contact-item:first-child::before {
-    content: '📍';
-    font-size: 1.125rem;
+    content: '\f3c5'; /* fa-map-marker-alt */
 }
 
 .contact-item:nth-child(2)::before {
-    content: '📞';
-    font-size: 1.125rem;
+    content: '\f095'; /* fa-phone-alt */
 }
 
 .contact-item:last-child::before {
-    content: '🕐';
-    font-size: 1.125rem;
+    content: '\f017'; /* fa-clock */
 }
 
 .phone-link {
@@ -639,14 +645,20 @@ nav {
 
 /* Profile Image */
 .profile-image {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center;
     margin: 0 auto var(--space-6);
     display: block;
     border: 4px solid var(--primary-light);
     box-shadow: var(--shadow-md);
+    transition: transform var(--duration-normal) var(--ease-smooth);
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
 }
 
 /* Footer Bottom */
