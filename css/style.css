@@ -562,12 +562,15 @@ nav {
 }
 
 .phone-link {
-    color: var(--white);
     font-weight: 600;
     transition: all var(--duration-fast) var(--ease-smooth);
 }
 
-.phone-link:hover {
+#phone-link-bar {
+    color: var(--white);
+}
+
+#phone-link-bar:hover {
     color: var(--white);
     text-decoration: underline;
 }
