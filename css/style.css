@@ -5,16 +5,16 @@
 
 :root {
     /* === PALETTE PROFESSIONNELLE === */
-    /* Bleu signature - élégant et médical */
-    --blue-900: #0a2540;
-    --blue-800: #0d3a5f;
-    --blue-700: #1a5490;
-    --blue-600: #2670c7;
-    --blue-500: #3b8dd8;
-    --blue-400: #60a9e8;
-    --blue-300: #8fc4f0;
-    --blue-200: #b8dbf7;
-    --blue-100: #e3f2fd;
+    /* Teal signature - apaisant et médical */
+    --blue-900: #003333;
+    --blue-800: #004D4D;
+    --blue-700: #006666;
+    --blue-600: #008080;
+    --blue-500: #4DB6B6;
+    --blue-400: #66B2B2;
+    --blue-300: #80C4C4;
+    --blue-200: #99D9D9;
+    --blue-100: #CCF0F0;
 
     /* Couleurs principales */
     --primary: var(--blue-600);
@@ -23,7 +23,7 @@
 
     /* Neutres - propres et aérés */
     --white: #ffffff;
-    --gray-50: #f9fafb;
+    --gray-50: #f8f9fa;
     --gray-100: #f3f4f6;
     --gray-200: #e5e7eb;
     --gray-300: #d1d5db;
@@ -32,7 +32,7 @@
     --gray-600: #4b5563;
     --gray-700: #374151;
     --gray-800: #1f2937;
-    --gray-900: #111827;
+    --gray-900: #333333;
 
     /* Couleurs sémantiques */
     --success: #10b981;
@@ -463,16 +463,6 @@ nav {
     pointer-events: none;
 }
 
-.hero::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background: var(--bg-primary);
-    clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
-}
 
 .hero .container {
     position: relative;
@@ -525,7 +515,7 @@ nav {
    CONTACT INFO BAR
    ============================================ */
 .contact-info {
-    background: var(--bg-secondary);
+    background: #66B2B2;
     border-bottom: 1px solid var(--border-color);
     padding: var(--space-5) 0;
 }
@@ -543,7 +533,7 @@ nav {
     align-items: center;
     gap: var(--space-3);
     font-size: 0.9375rem;
-    color: var(--text-secondary);
+    color: var(--white);
     position: relative;
     padding-left: var(--space-8);
 }
@@ -555,7 +545,7 @@ nav {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--primary);
+    color: var(--white);
     font-size: 1.125rem;
 }
 
@@ -572,13 +562,13 @@ nav {
 }
 
 .phone-link {
-    color: var(--primary);
+    color: var(--white);
     font-weight: 600;
     transition: all var(--duration-fast) var(--ease-smooth);
 }
 
 .phone-link:hover {
-    color: var(--primary-hover);
+    color: var(--white);
     text-decoration: underline;
 }
 
