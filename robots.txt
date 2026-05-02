@@ -2,8 +2,6 @@ User-agent: *
 Allow: /
 
 # Exclure les dossiers techniques
-Disallow: /css/
-Disallow: /js/
 Disallow: /admin/
 Disallow: /private/
 
